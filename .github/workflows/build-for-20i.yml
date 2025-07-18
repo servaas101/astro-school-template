@@ -25,19 +25,23 @@ jobs:
 
       - name: Push built files to deployment branch
         run: |
-          # Switch to deployment branch
-          git checkout --orphan 20i-deploy
-          git reset --hard
+          # Create temporary directory
+          mkdir -p ../tmp-build
+          cp -r dist/* ../tmp-build/
           
-          # Move built files to root
-          mv ../dist/* .
+          # Configure git identity
+          git config user.name "GitHub Actions"
+          git config user.email "actions@users.noreply.github.com"
+          
+          # Create or reset deployment branch
+          git checkout --orphan 20i-deploy || git checkout -f 20i-deploy
+          git rm -rf --quiet .
+          
+          # Move built files
+          mv ../tmp-build/* .
           
           # Add essential files
           touch .nojekyll
-          
-          # Configure git
-          git config user.name "GitHub Actions"
-          git config user.email "actions@users.noreply.github.com"
           
           # Commit all files
           git add -A
