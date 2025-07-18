@@ -7,9 +7,15 @@ on:
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
+    # Add permissions section here
+    permissions:
+      contents: write  # THIS IS CRITICAL
+      
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Important for branch operations
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -20,7 +26,6 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      # Add cache clearing step
       - name: Clear Astro cache
         run: npx astro clear
         
@@ -38,9 +43,17 @@ jobs:
           git config user.name "GitHub Actions"
           git config user.email "actions@users.noreply.github.com"
           
-          git checkout --orphan 20i-deploy || git checkout -f 20i-deploy
+          # Check if branch exists
+          if git ls-remote --heads origin 20i-deploy | grep -q '20i-deploy'; then
+            git checkout 20i-deploy
+          else
+            git checkout --orphan 20i-deploy
+          fi
+          
+          # Clean existing files
           git rm -rf --quiet .
           
+          # Move built files
           mv ../tmp-build/* .
           
           touch .nojekyll
