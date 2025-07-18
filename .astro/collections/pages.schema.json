@@ -1,0 +1,54 @@
+{
+  "$ref": "#/definitions/pages",
+  "definitions": {
+    "pages": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "heroTitle": {
+          "type": "string"
+        },
+        "heroSubtitle": {
+          "type": "string"
+        },
+        "heroDescription": {
+          "type": "string"
+        },
+        "aboutTitle": {
+          "type": "string"
+        },
+        "aboutDescription": {
+          "type": "string"
+        },
+        "aboutImage": {
+          "type": "string"
+        },
+        "mission": {
+          "type": "string"
+        },
+        "vision": {
+          "type": "string"
+        },
+        "values": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "$schema": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "title"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

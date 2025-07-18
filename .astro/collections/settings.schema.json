@@ -1,0 +1,56 @@
+{
+  "$ref": "#/definitions/settings",
+  "definitions": {
+    "settings": {
+      "type": "object",
+      "properties": {
+        "siteTitle": {
+          "type": "string"
+        },
+        "siteDescription": {
+          "type": "string"
+        },
+        "contactEmail": {
+          "type": "string"
+        },
+        "contactPhone": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string"
+        },
+        "social": {
+          "type": "object",
+          "properties": {
+            "facebook": {
+              "type": "string"
+            },
+            "twitter": {
+              "type": "string"
+            },
+            "instagram": {
+              "type": "string"
+            },
+            "linkedin": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false
+        },
+        "$schema": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "siteTitle",
+        "siteDescription",
+        "contactEmail",
+        "contactPhone",
+        "address",
+        "social"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

@@ -1,0 +1,67 @@
+{
+  "$ref": "#/definitions/courses",
+  "definitions": {
+    "courses": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "price": {
+          "type": "number"
+        },
+        "duration": {
+          "type": "string"
+        },
+        "students": {
+          "type": "number"
+        },
+        "instructor": {
+          "type": "string"
+        },
+        "rating": {
+          "type": "number",
+          "minimum": 1,
+          "maximum": 5
+        },
+        "image": {
+          "type": "string"
+        },
+        "category": {
+          "type": "string",
+          "enum": [
+            "Web Design",
+            "Graphic Design",
+            "Video Editing",
+            "Online Marketing",
+            "Programming",
+            "Business"
+          ]
+        },
+        "featured": {
+          "type": "boolean",
+          "default": false
+        },
+        "$schema": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "title",
+        "description",
+        "price",
+        "duration",
+        "students",
+        "instructor",
+        "rating",
+        "image",
+        "category"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

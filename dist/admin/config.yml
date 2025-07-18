@@ -1,0 +1,97 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "public/img"
+public_folder: "/img"
+
+collections:
+  - name: "pages"
+    label: "Pages"
+    files:
+      - label: "Home Page"
+        name: "home"
+        file: "src/content/home.md"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Hero Title", name: "heroTitle", widget: "string" }
+          - { label: "Hero Subtitle", name: "heroSubtitle", widget: "string" }
+          - { label: "Hero Description", name: "heroDescription", widget: "text" }
+          - { label: "About Title", name: "aboutTitle", widget: "string" }
+          - { label: "About Description", name: "aboutDescription", widget: "text" }
+          - { label: "About Image", name: "aboutImage", widget: "image" }
+      
+      - label: "About Page"
+        name: "about"
+        file: "src/content/about.md"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Description", name: "description", widget: "text" }
+          - { label: "Mission", name: "mission", widget: "text" }
+          - { label: "Vision", name: "vision", widget: "text" }
+          - { label: "Values", name: "values", widget: "list", field: { label: "Value", name: "value", widget: "string" } }
+
+  - name: "courses"
+    label: "Courses"
+    folder: "src/content/courses"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Price", name: "price", widget: "number" }
+      - { label: "Duration", name: "duration", widget: "string" }
+      - { label: "Students", name: "students", widget: "number" }
+      - { label: "Instructor", name: "instructor", widget: "string" }
+      - { label: "Rating", name: "rating", widget: "number", min: 1, max: 5 }
+      - { label: "Image", name: "image", widget: "image" }
+      - { label: "Category", name: "category", widget: "select", options: ["Web Design", "Graphic Design", "Video Editing", "Online Marketing", "Programming", "Business"] }
+      - { label: "Featured", name: "featured", widget: "boolean", default: false }
+      - { label: "Content", name: "body", widget: "markdown" }
+
+  - name: "team"
+    label: "Team Members"
+    folder: "src/content/team"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Name", name: "name", widget: "string" }
+      - { label: "Position", name: "position", widget: "string" }
+      - { label: "Bio", name: "bio", widget: "text" }
+      - { label: "Image", name: "image", widget: "image" }
+      - { label: "Facebook", name: "facebook", widget: "string", required: false }
+      - { label: "Twitter", name: "twitter", widget: "string", required: false }
+      - { label: "Instagram", name: "instagram", widget: "string", required: false }
+      - { label: "LinkedIn", name: "linkedin", widget: "string", required: false }
+
+  - name: "testimonials"
+    label: "Testimonials"
+    folder: "src/content/testimonials"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Name", name: "name", widget: "string" }
+      - { label: "Position", name: "position", widget: "string" }
+      - { label: "Company", name: "company", widget: "string", required: false }
+      - { label: "Testimonial", name: "testimonial", widget: "text" }
+      - { label: "Image", name: "image", widget: "image" }
+      - { label: "Rating", name: "rating", widget: "number", min: 1, max: 5 }
+
+  - name: "settings"
+    label: "Site Settings"
+    files:
+      - label: "General Settings"
+        name: "general"
+        file: "src/content/settings/general.md"
+        fields:
+          - { label: "Site Title", name: "siteTitle", widget: "string" }
+          - { label: "Site Description", name: "siteDescription", widget: "text" }
+          - { label: "Contact Email", name: "contactEmail", widget: "string" }
+          - { label: "Contact Phone", name: "contactPhone", widget: "string" }
+          - { label: "Address", name: "address", widget: "text" }
+          - { label: "Social Media", name: "social", widget: "object", fields: [
+              { label: "Facebook", name: "facebook", widget: "string", required: false },
+              { label: "Twitter", name: "twitter", widget: "string", required: false },
+              { label: "Instagram", name: "instagram", widget: "string", required: false },
+              { label: "LinkedIn", name: "linkedin", widget: "string", required: false }
+            ]}
