@@ -3,8 +3,7 @@ import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   output: 'static',
-  site: 'https://yourusername.github.io',
-  base: '/Tshikhuthula-School',
+  site: 'https://school.elitelayouts.co.za',
   integrations: [sitemap()],
   vite: {
     define: {
@@ -13,5 +12,8 @@ export default defineConfig({
     build: {
       assetsDir: 'assets'
     }
+  },
+  build: {
+    format: 'directory'
   }
 });
